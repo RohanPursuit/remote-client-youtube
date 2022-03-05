@@ -122,7 +122,7 @@ function App() {
           </> : <>
             <div className="controls">
               <form onSubmit={handleInput} action="">
-                  <input name="url" type="text" required/>
+                  <input name="url" type="text" placeholder="Share Youtube URL" required/>
                   <button type="submit" id="add">Add to this Playlist</button>
               </form>   
               <button id="send" onClick={sendMessage}>Play this Playlist</button>
