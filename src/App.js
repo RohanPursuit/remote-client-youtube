@@ -59,8 +59,8 @@ function App() {
       function handleDelete(event){
         event.preventDefault()
         const {id} = event.target
-        setRequest(requests.filter((url, i) => i != id))
-        setInfo(info.filter((url, i) => i != id))
+        setRequest(requests.filter((url, i) => i !== Number(id)))
+        setInfo(info.filter((url, i) => i !== Number(id)))
       }
 
       console.log(info)
