@@ -6,7 +6,6 @@ import "./App.css"
 const URL = process.env.REACT_APP_API_URL
 const socket = io(URL)
 
-
 function App() {
   const [requests, setRequest] = useState([])
   const [info, setInfo] = useState([])
