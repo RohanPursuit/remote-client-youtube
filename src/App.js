@@ -93,12 +93,17 @@ function App() {
   }
   
     function sendMessage(event) {
-        console.log("Remote Ran")
+        if(!requests.length){
+          alert("Playlist is Empty")
+        } else {
+          console.log("Remote Ran")
         event.preventDefault()
         socket.emit("client-message", {
             id: event.target.id,
             requests: requests
         })
+        }
+        
     
       }
 

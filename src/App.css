@@ -72,3 +72,8 @@ button {
 .preview-card hr {
 	border: 4px solid #000;
 }
+
+img {
+	height: 60vw;
+	width: 100vw;
+}
