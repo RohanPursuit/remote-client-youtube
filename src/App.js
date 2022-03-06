@@ -97,10 +97,13 @@ function App() {
           alert("Playlist is Empty")
         } else {
           console.log("Remote Ran")
+          const {id} = event.target
+          const volume = id === "+"? 0.1 : id === "-"? -0.1 : 0
         event.preventDefault()
         socket.emit("client-message", {
             id: event.target.id,
-            requests: requests
+            requests: requests,
+            volume: volume
         })
         }
         
@@ -130,9 +133,14 @@ function App() {
                   <input name="url" type="text" placeholder="Share Youtube URL" required/>
                   <button type="submit" id="add">Add to this Playlist</button>
               </form>   
-              <button id="send" onClick={sendMessage}>Play this Playlist</button>
-              <button id="next" onClick={sendMessage}>Next</button>
-              <button id="prev" onClick={sendMessage}>previous</button>
+              <button className="big-button" id="send" onClick={sendMessage}>Play this Playlist</button>
+              <button className="big-button" id="next" onClick={sendMessage}>Next</button>
+              <span>
+                <button id="prev" onClick={sendMessage}>Previous</button>
+                <button id="-" onClick={sendMessage}>-</button>
+                <button id="+" onClick={sendMessage}>+</button>
+              </span>
+              
             </div>
               <div className="cards">
                 {info.map((info, i) => {
@@ -141,7 +149,7 @@ function App() {
                   <div key={i} className="preview-card" >
                   <img id={i} src={info.thumbnail} alt="" onClick={sendMessage}/>
                   <h3 id={i} onClick={sendMessage}>{info.title}</h3>
-                  <button id={i} onClick={handleDelete}>Delete</button>
+                  <button className="big-button" id={i} onClick={handleDelete}>Delete</button>
                   <hr />
                   </div>
                 )
